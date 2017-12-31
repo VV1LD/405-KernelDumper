@@ -150,7 +150,7 @@ int kdump(struct thread *td, struct kdump_args* args){
 
 	// if mapping doesnt exist zero out that mem
 	if(cpRet == -1){
-		printfkernel("bzeroed here\n");
+		printfkernel("bzero at 0x%016llx\n", kaddr);
 		bzero(uaddr, 0x1000);
 		return cpRet;
 	}
@@ -184,7 +184,8 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 
 	cred->cr_prison = *got_prison0;
 	fd->fd_rdir = fd->fd_jdir = *got_rootvnode;
-
+	
+	// uart enabler
 	uint16_t *securityFlags = (uint64_t *)(kernel_base+0x2001516);
 	*securityFlags = *securityFlags & ~(1 << 15);
 
