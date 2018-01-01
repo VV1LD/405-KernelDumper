@@ -188,9 +188,10 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 	// uart enabler
 	uint16_t *securityFlags = (uint64_t *)(kernel_base+0x2001516);
 	*securityFlags = *securityFlags & ~(1 << 15);
+	*(char *)(kernel_base + 0x186b0a0) = 0; // set that console disable console output bool
 
 	// specters debug settings patchs
-	*(char *)(kernel_base + 0x186b0a0) = 0; 
+
 	*(char *)(kernel_base + 0x2001516) |= 0x14;
 	*(char *)(kernel_base + 0x2001539) |= 1;
 	*(char *)(kernel_base + 0x2001539) |= 2;
