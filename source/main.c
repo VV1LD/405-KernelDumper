@@ -204,11 +204,6 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 
 	// debug menu full patches thanks to sealab
 
-	*(uint32_t *)(kernel_base + 0x4E0456) = 0;	
-	*(uint32_t *)(kernel_base + 0x4CFB67) = 0;	
-	*(uint32_t *)(kernel_base + 0x4CEE69) = 0;	
-	*(uint32_t *)(kernel_base + 0x4CDF0E) = 0;	
-	*(uint32_t *)(kernel_base + 0x4CDA4D) = 0;
 	*(uint32_t *)(kernel_base + 0x4CECB7) = 0;
 	*(uint32_t *)(kernel_base + 0x4CFB9B) = 0;
 
