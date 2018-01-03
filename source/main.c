@@ -186,9 +186,7 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 	fd->fd_rdir = fd->fd_jdir = *got_rootvnode;
 	
 	// uart enabler
-	uint16_t *securityFlags = (uint64_t *)(kernel_base+0x2001516);
-	*securityFlags = *securityFlags & ~(1 << 15);
-	*(char *)(kernel_base + 0x186b0a0) = 0; // set that console disable console output bool
+	*(char *)(kernel_base + 0x186b0a0) = 0; // set the console disable console output bool
 
 	// specters debug settings patchs
 
