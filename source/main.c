@@ -211,6 +211,9 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 	*(uint16_t *)(kernel_base + 0x1FE59E4) = 0x8101;
 	*(uint16_t *)(kernel_base + 0X1FE5A2C) = 0x8101;
 	*(uint16_t *)(kernel_base + 0x200151C) = 0x8101;
+	
+	// Restore write protection
+	writeCr0(cr0);
 
 	// Say hello and put the kernel base in userland to we can use later
 
